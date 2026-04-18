@@ -1,0 +1,7 @@
+public abstract class Engine {
+
+//API REQUESTS HERE
+
+//WE WNAT RESULTS ONLY NO EXTRA STUFF VISITORS DEAL WITH THAT!!!
+
+}
