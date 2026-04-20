@@ -8,6 +8,10 @@ public class Engine {
 
 //API REQUESTS HERE
 
+protected Engine(){
+    //does nothing.. 
+    System.out.println("New Engine created!");
+}
 //WE WNAT RESULTS ONLY NO EXTRA STUFF VISITORS DEAL WITH THAT!!!
 //API CALLS there are three
 //We have, Feed, Browse, Lookup
@@ -33,17 +37,23 @@ String url = "https://api.nasa.gov/neo/rest/v1/neo/"+id+"?api_key=DEMO_KEY";
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            
+            //for debugging below:
             System.out.println("Raw JSON response:");
             System.out.println(response.body());
+
+            //debugging above:
+
+            //here's the output: what's returned:
+            //
 
             return response.body();
 
 
-} } catch (Exception e) {
+} catch (Exception e) {
             e.printStackTrace();
             return null; //throw exceptions
         }
+}
 }
 
 

@@ -12,8 +12,8 @@ public class Visitor extends Glib_GloobBaseVisitor<Void> {
 
 
 
-    @Override public Void visitCommand(Glib_GloobParser.CommandContext ctx) { /*engine.move(val(ctx.expr()));*/ return null; *}
-    @Override public visitFetch(Glib_GloobParser.FetchContext ctx) { return null; }
+    @Override public Void visitCommand(Glib_GloobParser.CommandContext ctx) { /*engine.move(val(ctx.expr()));*/ return null;}
+    @Override public Void visitFetch(Glib_GloobParser.FetchContext ctx) { return null; }
     @Override public Void visitOperation(Glib_GloobParser.OperationContext ctx) { return null; }
     @Override public Void visitParameters(Glib_GloobParser.ParametersContext ctx) { return null;}
 

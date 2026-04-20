@@ -18,9 +18,27 @@ public class Driver  {
         //IGNORE WONT NEEDlogoEngine.open() ; 
 
         while (parser.getCurrentToken().getType() != Token.EOF) {
-            visitor.visit(parser.command());
+           //ignore for now visitor.visit(parser.command());
         }
         //WONT NEEDlogoEngine.close() ; 
+    
+    //**********Debug stage:
+
+
+      Engine engine = new Engine();
+
+        String json = engine.getDistance(3542519);
+
+        System.out.println("Returned JSON:");
+        System.out.println(json);
+
+
+    //End of debug stage
+    
+    
     }
+
+
+
 }
 
