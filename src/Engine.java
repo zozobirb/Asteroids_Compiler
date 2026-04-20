@@ -38,8 +38,8 @@ String url = "https://api.nasa.gov/neo/rest/v1/neo/"+id+"?api_key=DEMO_KEY";
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             //for debugging below:
-            System.out.println("Raw JSON response:");
-            System.out.println(response.body());
+            //System.out.println("Raw JSON response:");
+            //System.out.println(response.body());
 
             //debugging above:
 
