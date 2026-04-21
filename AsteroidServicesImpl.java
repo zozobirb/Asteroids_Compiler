@@ -1,3 +1,8 @@
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+
+
 public class AsteroidServicesImpl implements AsteroidServices{
 
 
@@ -19,42 +24,18 @@ public class AsteroidServicesImpl implements AsteroidServices{
 
     //Example:
 
-    public double getAsteroid(int id){
+    public double getDistance(int id){
 
-        String json = engine.getAsteroid(id);//id parameter sent as apart of function call
+        String json = engine.getDistance(id);//id parameter sent as apart of function call
         //tokenize json, then grab field, we'll have to figure out what field holds the distance
         //to get the distance of earth, it's going to be 
         
+        
         double token[] = {0.1111};
-
-
-        /*
-            String json = engine.getAsteriod(3542519);
-    //ystem.out.println(json);
-       
-        //get the token tokenize
-/       /Debug for string parsing
-        JsonObject root = JsonParser.parseString(json).getAsJsonObject();
-        JsonArray closeApproaches = root.getAsJsonArray("close_approach_data");
-        JsonObject EarthData = closeApproaches.get(2).getAsJsonObject();
-        JsonObject miss_distance = EarthData.get("miss_distance").getAsJsonObject();
-        double dist = miss_distance.get("kilometers").getAsDouble();//no index, not array, obj, use name!
-        System.out.println("distance is of asteriod id is: "+dist);
-
-        */
-
+        
 
 
         return token[0];
     }
-
-  
-
-
-
-
-
-
-
 
 }

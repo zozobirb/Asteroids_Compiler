@@ -1,4 +1,4 @@
-// Generated from Glib_Gloob.g4 by ANTLR 4.13.2
+// Generated from src/Glib_Gloob.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -11,6 +11,13 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  */
 @SuppressWarnings("CheckReturnValue")
 public class Glib_GloobBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements Glib_GloobVisitor<T> {
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitExpr(Glib_GloobParser.ExprContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

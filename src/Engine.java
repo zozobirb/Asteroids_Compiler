@@ -5,11 +5,13 @@ import java.net.http.HttpResponse;
 
 
 public class Engine {
-
+private final String apiKey;
 //API REQUESTS HERE
+     
 
 protected Engine(){
     //does nothing.. 
+    this.apiKey = System.getenv("NASA_API_KEY");
     System.out.println("New Engine created!");
 }
 //WE WNAT RESULTS ONLY NO EXTRA STUFF VISITORS DEAL WITH THAT!!!
@@ -17,7 +19,7 @@ protected Engine(){
 //We have, Feed, Browse, Lookup
 
 //get distance can be refrence either name or id!!
-public String getDistance(int id){
+public String getAsteroid(int id){
 try {
            
   //http request here if we have an id use NEOWS: Look-up
@@ -26,7 +28,7 @@ try {
 //
 //for now hard coding the id
 id = 3542519;
-String url = "https://api.nasa.gov/neo/rest/v1/neo/"+id+"?api_key=DEMO_KEY";
+String url = "https://api.nasa.gov/neo/rest/v1/neo/"+id+"?api_key="+apiKey;
 
  HttpClient client = HttpClient.newHttpClient();
 

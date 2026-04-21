@@ -13,6 +13,7 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
         for(int i = 1; i < ctx.operation().size(); i++){
             // TODO: fill in after adding operation
         }
+        
         System.out.println("Command visited");
         return node;
     }
