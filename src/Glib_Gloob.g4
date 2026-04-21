@@ -1,5 +1,9 @@
 grammar Glib_Gloob;
 
+expr
+    : command
+    ;
+
 command
     : fetch ('|' operation)* 
     ;
