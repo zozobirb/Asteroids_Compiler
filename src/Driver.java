@@ -11,7 +11,7 @@ import com.google.gson.JsonParser;
 public class Driver  {
 
     public static void main(String[] args) throws IOException  {
-        final int SIZE = args.length == 0 ? 700 : Integer.parseInt(args[0]) ; 
+       // final int SIZE =1 args.length == 0 ? 700 : Integer.parseInt(args[0]) ; 
         CharStream input = CharStreams.fromStream(System.in);
         Glib_GloobLexer lexer = new Glib_GloobLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -39,6 +39,7 @@ public class Driver  {
 //Debug for string parsing
 JsonObject root = JsonParser.parseString(json).getAsJsonObject();
 JsonArray closeApproaches = root.getAsJsonArray("close_approach_data");
+//System.out.println(root);
 JsonObject EarthData = closeApproaches.get(2).getAsJsonObject();
 JsonObject miss_distance = EarthData.get("miss_distance").getAsJsonObject();
 double dist = miss_distance.get("kilometers").getAsDouble();//no index, not array, obj, use name!

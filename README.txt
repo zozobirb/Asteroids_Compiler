@@ -52,6 +52,10 @@ Example query:
 
 The result will be printed to the terminal.
 
+
+
+
+CAN IGNORE 7. FOR NOW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 7. API Key Configuration
 ------------------------
 
