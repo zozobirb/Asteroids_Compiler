@@ -11,7 +11,8 @@ private final String apiKey;
 
 protected Engine(){
     //does nothing.. 
-    this.apiKey = System.getenv("NASA_API_KEY");
+    //this.apiKey = System.getenv("NASA_API_KEY");
+    this.apiKey = DEMO_KEY
     System.out.println("New Engine created!");
 }
 //WE WNAT RESULTS ONLY NO EXTRA STUFF VISITORS DEAL WITH THAT!!!
