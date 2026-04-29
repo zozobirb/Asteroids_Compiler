@@ -42,6 +42,8 @@ To compile the project, run:
 Manual run:
 
     java -cp "bin:lib/*" Driver "FETCH asteroid(id=5)"
+    After executing the command, press <Ctrl-D>
+    To get the results of the distance of asteroid id #5
 
 
 6. Example
@@ -52,6 +54,7 @@ Example query:
 
 The result will be printed to the terminal.
 
+NOTE: FOR NOW PLEASE DISREGARD 7. API KEY CONFIGURATION NOT NEEDED FOR NOW(4/28/26)
 7. API Key Configuration
 ------------------------
 
