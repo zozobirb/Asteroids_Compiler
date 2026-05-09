@@ -6,14 +6,13 @@ import java.net.http.HttpResponse;
 
 public class Engine {
 private final String apiKey;
-//API REQUESTS HERE
      
-
 protected Engine(){
-    //does nothing.. 
-    //this.apiKey = System.getenv("NASA_API_KEY");
-    this.apiKey = "DEMO_KEY";
+
+    //changing use of key
+    this.apiKey = System.getenv("API_KEY");
     System.out.println("New Engine created!");
+  
 }
 //WE WNAT RESULTS ONLY NO EXTRA STUFF VISITORS DEAL WITH THAT!!!
 //API CALLS there are three

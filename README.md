@@ -30,32 +30,8 @@ To verify Java is installed:
     java -version
 
 
-4. Building the Project
------------------------
-To compile the project, run:
-
-    javac -cp "lib/*" -d bin src/*.java
-
-
-5. Running the System
----------------------
-Manual run:
-
-    java -cp "bin:lib/*" Driver "FETCH asteroid(id=5)"
-    After executing the command, press <Ctrl-D>
-    To get the results of the distance of asteroid id #5
-
-
-6. Example
-----------
-Example query:
-
-    FETCH asteroid(id=5)
-
-The result will be printed to the terminal.
-
-NOTE: FOR NOW PLEASE DISREGARD 7. API KEY CONFIGURATION NOT NEEDED FOR NOW(4/28/26)
-7. API Key Configuration
+4. API Key Configuration
+>>>>>>> 3aaa3c4 (Reconfigured the usage of the api key, users must export the key, in terminal, updated in readme)
 ------------------------
 
 This project requires an API key to access the asteroid data service.
@@ -66,6 +42,32 @@ Linux/macOS:
     export API_KEY=your_api_key_here
     Can get an api key through: https://api.nasa.gov/?search=neows#authentication
     OR use: DEMO_KEY
+
+
+
+5. Building the Project
+-----------------------
+To compile the project, run:
+
+    javac -cp "lib/*" -d bin src/*.java
+
+
+6. Running the System
+---------------------
+Manual run:
+
+    java -cp "bin:lib/*" Driver "FETCH asteroid(id=5)"
+    <CTRL-D>
+
+
+7. Example
+----------
+Example query:
+
+    FETCH asteroid(id=5)
+
+The result will be printed to the terminal.
+
 
 Then run the program (Running the system example)
 Note:
