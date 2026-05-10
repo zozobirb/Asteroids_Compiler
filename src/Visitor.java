@@ -17,6 +17,4 @@ public class Visitor extends Glib_GloobBaseVisitor<Void> {
     @Override public Void visitOperation(Glib_GloobParser.OperationContext ctx) { return null; }
     @Override public Void visitParameters(Glib_GloobParser.ParametersContext ctx) { return null;}
 
-
-
 }

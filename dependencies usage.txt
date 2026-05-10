@@ -1,9 +1,18 @@
 
-javac -cp "lib/*" -d bin src/*.java
+Make sure too, when in a new shell:
+export API_KEY=actual_key
 
+Execute this command when changing grammar:
+rm -rf gen bin
+mkdir bin
+
+Command for when updating grammar:
+antlr4 -visitor -no-listener -o gen Glib_Gloob.g4
+
+Execute this command when updating any java files:
+javac -d bin -cp ".:lib/*" $(find gen src -name "*.java")
 java -cp "bin:lib/*" Driver
+<ctrl-d>
+Btw grammar moved to project root, no longer in src!!
 
-Also may need to download:
-https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar
-to class path, and add it to /lib folder, along with antlr move the jar
-to /lib!!
+

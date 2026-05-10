@@ -1,4 +1,4 @@
-// Generated from src/Glib_Gloob.g4 by ANTLR 4.13.2
+// Generated from Glib_Gloob.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -17,14 +17,14 @@ public class Glib_GloobParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, FETCH=6, ASTEROID=7, MIN=8, MAX=9, 
-		DISTANCE=10, SIZE=11, TRUE=12, FALSE=13, ID=14, INT=15, DATE=16, WS=17;
+		TRUE=10, FALSE=11, ID=12, INT=13, DATE=14, WS=15;
 	public static final int
 		RULE_expr = 0, RULE_command = 1, RULE_fetch = 2, RULE_operation = 3, RULE_parameters = 4, 
-		RULE_assign = 5, RULE_value = 6, RULE_field = 7;
+		RULE_assign = 5, RULE_field = 6, RULE_value = 7;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"expr", "command", "fetch", "operation", "parameters", "assign", "value", 
-			"field"
+			"expr", "command", "fetch", "operation", "parameters", "assign", "field", 
+			"value"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -32,14 +32,14 @@ public class Glib_GloobParser extends Parser {
 	private static String[] makeLiteralNames() {
 		return new String[] {
 			null, "'|'", "'('", "')'", "','", "'='", "'FETCH'", "'asteroid'", "'MIN'", 
-			"'MAX'", "'distance'", "'size'", "'TRUE'", "'FALSE'"
+			"'MAX'", "'TRUE'", "'FALSE'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, "FETCH", "ASTEROID", "MIN", "MAX", 
-			"DISTANCE", "SIZE", "TRUE", "FALSE", "ID", "INT", "DATE", "WS"
+			"TRUE", "FALSE", "ID", "INT", "DATE", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -103,14 +103,6 @@ public class Glib_GloobParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expr; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).enterExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).exitExpr(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitExpr(this);
 			else return visitor.visitChildren(this);
@@ -153,14 +145,6 @@ public class Glib_GloobParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_command; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).enterCommand(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).exitCommand(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitCommand(this);
@@ -218,14 +202,6 @@ public class Glib_GloobParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_fetch; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).enterFetch(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).exitFetch(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitFetch(this);
 			else return visitor.visitChildren(this);
@@ -272,23 +248,15 @@ public class Glib_GloobParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class OperationContext extends ParserRuleContext {
-		public TerminalNode MIN() { return getToken(Glib_GloobParser.MIN, 0); }
 		public FieldContext field() {
 			return getRuleContext(FieldContext.class,0);
 		}
+		public TerminalNode MIN() { return getToken(Glib_GloobParser.MIN, 0); }
 		public TerminalNode MAX() { return getToken(Glib_GloobParser.MAX, 0); }
 		public OperationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_operation; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).enterOperation(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).exitOperation(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitOperation(this);
@@ -300,32 +268,39 @@ public class Glib_GloobParser extends Parser {
 		OperationContext _localctx = new OperationContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_operation);
 		try {
-			setState(44);
+			setState(45);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case MIN:
+			case ID:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(34);
-				match(MIN);
-				setState(35);
-				match(T__1);
-				setState(36);
 				field();
+				}
+				break;
+			case MIN:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(35);
+				match(MIN);
+				setState(36);
+				match(T__1);
 				setState(37);
+				field();
+				setState(38);
 				match(T__2);
 				}
 				break;
 			case MAX:
-				enterOuterAlt(_localctx, 2);
+				enterOuterAlt(_localctx, 3);
 				{
-				setState(39);
-				match(MAX);
 				setState(40);
-				match(T__1);
+				match(MAX);
 				setState(41);
-				field();
+				match(T__1);
 				setState(42);
+				field();
+				setState(43);
 				match(T__2);
 				}
 				break;
@@ -357,14 +332,6 @@ public class Glib_GloobParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameters; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).enterParameters(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).exitParameters(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitParameters(this);
 			else return visitor.visitChildren(this);
@@ -378,21 +345,21 @@ public class Glib_GloobParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(46);
+			setState(47);
 			assign();
-			setState(51);
+			setState(52);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__3) {
 				{
 				{
-				setState(47);
-				match(T__3);
 				setState(48);
+				match(T__3);
+				setState(49);
 				assign();
 				}
 				}
-				setState(53);
+				setState(54);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -420,14 +387,6 @@ public class Glib_GloobParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_assign; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).enterAssign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).exitAssign(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitAssign(this);
 			else return visitor.visitChildren(this);
@@ -440,12 +399,47 @@ public class Glib_GloobParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54);
-			match(ID);
 			setState(55);
-			match(T__4);
+			match(ID);
 			setState(56);
+			match(T__4);
+			setState(57);
 			value();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
+	public static class FieldContext extends ParserRuleContext {
+		public TerminalNode ID() { return getToken(Glib_GloobParser.ID, 0); }
+		public FieldContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_field; }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitField(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final FieldContext field() throws RecognitionException {
+		FieldContext _localctx = new FieldContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_field);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(59);
+			match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -471,14 +465,6 @@ public class Glib_GloobParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_value; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).enterValue(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).exitValue(this);
-		}
-		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitValue(this);
 			else return visitor.visitChildren(this);
@@ -487,67 +473,14 @@ public class Glib_GloobParser extends Parser {
 
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_value);
+		enterRule(_localctx, 14, RULE_value);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(61);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 126976L) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			else {
-				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-				_errHandler.reportMatch(this);
-				consume();
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	@SuppressWarnings("CheckReturnValue")
-	public static class FieldContext extends ParserRuleContext {
-		public TerminalNode DISTANCE() { return getToken(Glib_GloobParser.DISTANCE, 0); }
-		public TerminalNode SIZE() { return getToken(Glib_GloobParser.SIZE, 0); }
-		public FieldContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_field; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).enterField(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Glib_GloobListener ) ((Glib_GloobListener)listener).exitField(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Glib_GloobVisitor ) return ((Glib_GloobVisitor<? extends T>)visitor).visitField(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final FieldContext field() throws RecognitionException {
-		FieldContext _localctx = new FieldContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_field);
-		int _la;
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(60);
-			_la = _input.LA(1);
-			if ( !(_la==DISTANCE || _la==SIZE) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 31744L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -569,43 +502,43 @@ public class Glib_GloobParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0011?\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\u000f@\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0001"+
 		"\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0005\u0001\u0016"+
 		"\b\u0001\n\u0001\f\u0001\u0019\t\u0001\u0001\u0002\u0001\u0002\u0001\u0002"+
 		"\u0001\u0002\u0003\u0002\u001f\b\u0002\u0001\u0002\u0001\u0002\u0001\u0003"+
 		"\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003"+
-		"\u0001\u0003\u0001\u0003\u0001\u0003\u0003\u0003-\b\u0003\u0001\u0004"+
-		"\u0001\u0004\u0001\u0004\u0005\u00042\b\u0004\n\u0004\f\u00045\t\u0004"+
-		"\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0006\u0001\u0006"+
-		"\u0001\u0007\u0001\u0007\u0001\u0007\u0000\u0000\b\u0000\u0002\u0004\u0006"+
-		"\b\n\f\u000e\u0000\u0002\u0001\u0000\f\u0010\u0001\u0000\n\u000b:\u0000"+
-		"\u0010\u0001\u0000\u0000\u0000\u0002\u0012\u0001\u0000\u0000\u0000\u0004"+
-		"\u001a\u0001\u0000\u0000\u0000\u0006,\u0001\u0000\u0000\u0000\b.\u0001"+
-		"\u0000\u0000\u0000\n6\u0001\u0000\u0000\u0000\f:\u0001\u0000\u0000\u0000"+
-		"\u000e<\u0001\u0000\u0000\u0000\u0010\u0011\u0003\u0002\u0001\u0000\u0011"+
-		"\u0001\u0001\u0000\u0000\u0000\u0012\u0017\u0003\u0004\u0002\u0000\u0013"+
-		"\u0014\u0005\u0001\u0000\u0000\u0014\u0016\u0003\u0006\u0003\u0000\u0015"+
-		"\u0013\u0001\u0000\u0000\u0000\u0016\u0019\u0001\u0000\u0000\u0000\u0017"+
-		"\u0015\u0001\u0000\u0000\u0000\u0017\u0018\u0001\u0000\u0000\u0000\u0018"+
-		"\u0003\u0001\u0000\u0000\u0000\u0019\u0017\u0001\u0000\u0000\u0000\u001a"+
-		"\u001b\u0005\u0006\u0000\u0000\u001b\u001c\u0005\u0007\u0000\u0000\u001c"+
-		"\u001e\u0005\u0002\u0000\u0000\u001d\u001f\u0003\b\u0004\u0000\u001e\u001d"+
-		"\u0001\u0000\u0000\u0000\u001e\u001f\u0001\u0000\u0000\u0000\u001f \u0001"+
-		"\u0000\u0000\u0000 !\u0005\u0003\u0000\u0000!\u0005\u0001\u0000\u0000"+
-		"\u0000\"#\u0005\b\u0000\u0000#$\u0005\u0002\u0000\u0000$%\u0003\u000e"+
-		"\u0007\u0000%&\u0005\u0003\u0000\u0000&-\u0001\u0000\u0000\u0000\'(\u0005"+
-		"\t\u0000\u0000()\u0005\u0002\u0000\u0000)*\u0003\u000e\u0007\u0000*+\u0005"+
-		"\u0003\u0000\u0000+-\u0001\u0000\u0000\u0000,\"\u0001\u0000\u0000\u0000"+
-		",\'\u0001\u0000\u0000\u0000-\u0007\u0001\u0000\u0000\u0000.3\u0003\n\u0005"+
-		"\u0000/0\u0005\u0004\u0000\u000002\u0003\n\u0005\u00001/\u0001\u0000\u0000"+
-		"\u000025\u0001\u0000\u0000\u000031\u0001\u0000\u0000\u000034\u0001\u0000"+
-		"\u0000\u00004\t\u0001\u0000\u0000\u000053\u0001\u0000\u0000\u000067\u0005"+
-		"\u000e\u0000\u000078\u0005\u0005\u0000\u000089\u0003\f\u0006\u00009\u000b"+
-		"\u0001\u0000\u0000\u0000:;\u0007\u0000\u0000\u0000;\r\u0001\u0000\u0000"+
-		"\u0000<=\u0007\u0001\u0000\u0000=\u000f\u0001\u0000\u0000\u0000\u0004"+
-		"\u0017\u001e,3";
+		"\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0003\u0003.\b\u0003"+
+		"\u0001\u0004\u0001\u0004\u0001\u0004\u0005\u00043\b\u0004\n\u0004\f\u0004"+
+		"6\t\u0004\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0006"+
+		"\u0001\u0006\u0001\u0007\u0001\u0007\u0001\u0007\u0000\u0000\b\u0000\u0002"+
+		"\u0004\u0006\b\n\f\u000e\u0000\u0001\u0001\u0000\n\u000e<\u0000\u0010"+
+		"\u0001\u0000\u0000\u0000\u0002\u0012\u0001\u0000\u0000\u0000\u0004\u001a"+
+		"\u0001\u0000\u0000\u0000\u0006-\u0001\u0000\u0000\u0000\b/\u0001\u0000"+
+		"\u0000\u0000\n7\u0001\u0000\u0000\u0000\f;\u0001\u0000\u0000\u0000\u000e"+
+		"=\u0001\u0000\u0000\u0000\u0010\u0011\u0003\u0002\u0001\u0000\u0011\u0001"+
+		"\u0001\u0000\u0000\u0000\u0012\u0017\u0003\u0004\u0002\u0000\u0013\u0014"+
+		"\u0005\u0001\u0000\u0000\u0014\u0016\u0003\u0006\u0003\u0000\u0015\u0013"+
+		"\u0001\u0000\u0000\u0000\u0016\u0019\u0001\u0000\u0000\u0000\u0017\u0015"+
+		"\u0001\u0000\u0000\u0000\u0017\u0018\u0001\u0000\u0000\u0000\u0018\u0003"+
+		"\u0001\u0000\u0000\u0000\u0019\u0017\u0001\u0000\u0000\u0000\u001a\u001b"+
+		"\u0005\u0006\u0000\u0000\u001b\u001c\u0005\u0007\u0000\u0000\u001c\u001e"+
+		"\u0005\u0002\u0000\u0000\u001d\u001f\u0003\b\u0004\u0000\u001e\u001d\u0001"+
+		"\u0000\u0000\u0000\u001e\u001f\u0001\u0000\u0000\u0000\u001f \u0001\u0000"+
+		"\u0000\u0000 !\u0005\u0003\u0000\u0000!\u0005\u0001\u0000\u0000\u0000"+
+		"\".\u0003\f\u0006\u0000#$\u0005\b\u0000\u0000$%\u0005\u0002\u0000\u0000"+
+		"%&\u0003\f\u0006\u0000&\'\u0005\u0003\u0000\u0000\'.\u0001\u0000\u0000"+
+		"\u0000()\u0005\t\u0000\u0000)*\u0005\u0002\u0000\u0000*+\u0003\f\u0006"+
+		"\u0000+,\u0005\u0003\u0000\u0000,.\u0001\u0000\u0000\u0000-\"\u0001\u0000"+
+		"\u0000\u0000-#\u0001\u0000\u0000\u0000-(\u0001\u0000\u0000\u0000.\u0007"+
+		"\u0001\u0000\u0000\u0000/4\u0003\n\u0005\u000001\u0005\u0004\u0000\u0000"+
+		"13\u0003\n\u0005\u000020\u0001\u0000\u0000\u000036\u0001\u0000\u0000\u0000"+
+		"42\u0001\u0000\u0000\u000045\u0001\u0000\u0000\u00005\t\u0001\u0000\u0000"+
+		"\u000064\u0001\u0000\u0000\u000078\u0005\f\u0000\u000089\u0005\u0005\u0000"+
+		"\u00009:\u0003\u000e\u0007\u0000:\u000b\u0001\u0000\u0000\u0000;<\u0005"+
+		"\f\u0000\u0000<\r\u0001\u0000\u0000\u0000=>\u0007\u0000\u0000\u0000>\u000f"+
+		"\u0001\u0000\u0000\u0000\u0004\u0017\u001e-4";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

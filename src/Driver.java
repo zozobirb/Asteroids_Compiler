@@ -46,6 +46,7 @@ double dist = miss_distance.get("kilometers").getAsDouble();//no index, not arra
     //End of debug stage
     //keys are the attributes, needs a key, whereas indexes are elements of a key
     System.out.println("distance "+dist);
+    System.out.println("Updated driver!!");
     
     
     }

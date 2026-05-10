@@ -1,4 +1,4 @@
-// Generated from src/Glib_Gloob.g4 by ANTLR 4.13.2
+// Generated from Glib_Gloob.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -46,15 +46,15 @@ public interface Glib_GloobVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssign(Glib_GloobParser.AssignContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link Glib_GloobParser#value}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitValue(Glib_GloobParser.ValueContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link Glib_GloobParser#field}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitField(Glib_GloobParser.FieldContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Glib_GloobParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitValue(Glib_GloobParser.ValueContext ctx);
 }

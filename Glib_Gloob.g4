@@ -13,17 +13,25 @@ fetch
     ;
 
 operation 
-    : MIN '(' field ')' 
+    : field
+    | MIN '(' field ')' 
     | MAX '(' field ')'
     ;
+
 
 parameters
     : assign (',' assign)*
     ;
 
-assign
+
+assign 
     : ID '=' value
     ;
+
+field
+   : ID
+   ;
+
 
 value
     : ID
@@ -33,21 +41,13 @@ value
     | FALSE
     ;
 
-field
-    : DISTANCE
-    | SIZE
-    ;
-
 FETCH : 'FETCH';
 ASTEROID : 'asteroid';
 MIN : 'MIN';
 MAX : 'MAX';
-DISTANCE : 'distance';
-SIZE : 'size';
 TRUE : 'TRUE';
 FALSE : 'FALSE';
-
-ID  : [a-zA-Z_][a-zA-Z_0-9]* ;
+ID : [a-zA-Z][a-zA-Z]*;
 INT : [0-9]+ ;
 DATE : [0-9][0-9][0-9][0-9] '-' [0-9][0-9] '-' [0-9][0-9];
 WS  : [ \t\r\n]+ -> skip ;
