@@ -32,7 +32,7 @@ public class Driver  {
 
       Engine engine = new Engine();
 ///hard coding the services function!! Down below:
-        String json = engine.getAsteroid(3542519);
+        String json = engine.getAsteroidID(3542519);
     //ystem.out.println(json);
        
         //get the token tokenize
@@ -43,10 +43,38 @@ JsonArray closeApproaches = root.getAsJsonArray("close_approach_data");
 JsonObject EarthData = closeApproaches.get(2).getAsJsonObject();
 JsonObject miss_distance = EarthData.get("miss_distance").getAsJsonObject();
 double dist = miss_distance.get("kilometers").getAsDouble();//no index, not array, obj, use name!
-    //End of debug stage
+
+//debug checking for other engine query!
+String jsonDate = engine.getAsteroidDate("2015-09-07", "2015-09-08");
+JsonObject rootDate = JsonParser.parseString(jsonDate).getAsJsonObject();
+JsonObject near_earth = rootDate.getAsJsonObject("near_earth_objects");
+//System.out.println(root);
+JsonArray dateArray = near_earth.getAsJsonArray("2015-09-07");
+JsonObject ObjectIndex = dateArray.get(2).getAsJsonObject();
+String asteroidName =  ObjectIndex.get("name").getAsString();
+
+//debug for browsing all asteroids limit tho!
+String jsonAll = engine.getAsteroidALL();
+JsonObject rootAll = JsonParser.parseString(jsonAll).getAsJsonObject();
+JsonArray near_earthAll = rootAll.getAsJsonArray("near_earth_objects");
+//System.out.println(root);
+JsonObject ObjectAllIndex = near_earthAll.get(2).getAsJsonObject();
+
+String isHazardous = ObjectAllIndex.get("is_sentry_object").getAsString();
+
+
+
+
+
+
+    
     //keys are the attributes, needs a key, whereas indexes are elements of a key
-    System.out.println("distance "+dist);
+    System.out.println("distance for id search "+dist);
+    System.out.println("name of asteroid date search: "+asteroidName);
+    System.out.println("Is the object #2 selected from all asteroid, is active? "+isHazardous);
+
     System.out.println("Updated driver!!");
+    //End of debug stage
     
     
     }

@@ -23,10 +23,10 @@ public class AsteroidServicesImpl implements AsteroidServices{
     //functions actual implementation for the the AsteroidServices interface here:
 
     //Example:
+//FOR NOW VOID
+    public void serviceID(int id){
 
-    public double getDistance(int id){
-
-        String json = engine.getAsteroid(id);//id parameter sent as apart of function call
+        String json = engine.getAsteroidID(id);//id parameter sent as apart of function call
         //tokenize json, then grab field, we'll have to figure out what field holds the distance
         //to get the distance of earth, it's going to be 
         
@@ -35,7 +35,7 @@ public class AsteroidServicesImpl implements AsteroidServices{
         
 
 
-        return token[0];
+    
     }
 
 }

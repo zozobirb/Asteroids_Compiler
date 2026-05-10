@@ -31,7 +31,6 @@ To verify Java is installed:
 
 
 4. API Key Configuration
->>>>>>> 3aaa3c4 (Reconfigured the usage of the api key, users must export the key, in terminal, updated in readme)
 ------------------------
 
 This project requires an API key to access the asteroid data service.
