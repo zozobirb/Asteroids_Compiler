@@ -63,9 +63,18 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
     @Override
     public Expr visitOperation(Glib_GloobParser.OperationContext ctx){
         System.out.println("Operation visited");
-        Expr _field = visit(ctx.field());
-        String op = ctx.getChild(0).getText();
-        return new OPERATION(op, _field);
+        
+    if (ctx.MIN() != null) {
+        return new MINOP(ctx.field().getText());
+    }
+
+    if (ctx.MAX() != null) {
+        return new MAXOP(ctx.field().getText());
+    }
+
+    // otherwise plain field operation
+    // create FieldNode
+    return new FIELD((ctx.field().getText()));
     }
 
 }
@@ -97,12 +106,27 @@ class BOOL extends Expr{
 class FETCH extends Expr{
     // 
 }
-
+/*
 class OPERATION extends Expr{
     final String op; 
     final Expr field;
     OPERATION(String op, Expr field){this.op=op; this.field=field;}
 }
+*/
+
+class MINOP extends Expr{
+    final String field;
+    MINOP(String field){this.field=field;}
+}
+class MAXOP extends Expr{
+    final String field;
+    MAXOP(String field){this.field=field;}
+}
+class FIELD extends Expr{
+    final String field;
+    FIELD(String field){this.field=field;}
+}
+
 
 class PARAMETER extends Expr{
     final Expr parameter, nextParameter;
