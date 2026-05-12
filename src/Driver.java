@@ -84,7 +84,9 @@ public class Driver  {
 
 // String isHazardous = ObjectAllIndex.get("is_sentry_object").getAsString();
 
-
+//New testing, services
+AsteroidServices testS = new AsteroidServices();
+testS.testing();
 
 
 
@@ -99,6 +101,18 @@ public class Driver  {
 //     //End of debug stage
     
     
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

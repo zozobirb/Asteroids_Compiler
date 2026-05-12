@@ -26,8 +26,6 @@ try {
 //parameter asteroid_id, 
 //Query: https://api.nasa.gov/neo/rest/v1/neo/ID?api_key=DEMO_KEY 
 //
-//for now hard coding the id
-id = 3542519;
 String url = "https://api.nasa.gov/neo/rest/v1/neo/"+id+"?api_key="+apiKey;
 
  HttpClient client = HttpClient.newHttpClient();
