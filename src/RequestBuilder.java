@@ -9,9 +9,29 @@ import java.util.HashMap;
 
 class RequestBuilder{
     private final List<String> stack = new ArrayList<>();
-    private final HashMap<String, String> parameters = new HashMap<>();
-    private final List<String> field = new ArrayList<>();
-    
+    private String astID = null;
+    private final List<String[]> parameters = new ArrayList<String[]>();
+    private final HashMap<String, String> field = new HashMap<String, String>();
+    // private final AsteroidServices service = new AsteroidServices();
+
+    private void pushParameters(){
+        // TODO: implement parameters with service
+        for(String[] p : parameters){
+            if(p[0].equals("ID"))
+                astID = p[0];
+            // do other things
+        }
+        requestAsteroid();
+    }
+
+    private void requestAsteroid(){
+        if(astID == null)
+            System.out.println("Sending request with no parameters...");
+        else if(astID.equals("ID"))
+            System.out.println("Sending request with an ID...");
+        else
+            throw new RuntimeException("unknown parameter");
+    }
 
     public void genRequest(Expr e){
         // System.out.println("AST Traverser visited.");
@@ -40,25 +60,27 @@ class RequestBuilder{
             return;
             // NOTE: bool includes value (boolean)
         }
+
+
         if(e instanceof FIELD f){
             System.out.println("field visited");
-            // TODO: logic for field
-            // NOTE: field includes field (expr)
+            genRequest(f.value); //id is pushed to stack
+            return;
+            // NOTE: field includes field (id)
         }
         if(e instanceof FETCH f){
             System.out.println("fetch visited");
             genRequest(f.parameters);
-
-            // TODO: logic for fetch
+            return;
         }
         if(e instanceof COMMAND c){
             System.out.println("Command visited");
             genRequest(c.fetch);
-            genRequest(c.operationSet);
-
-            // Service.generateOutput(fields);
-
-            // TODO: logic for command
+            System.out.println("fetch returned");
+            if(c.operationSet != null)
+                genRequest(c.operationSet);
+            System.out.println("returned to cmd");
+            return;
             // NOTE: command includes fetch (expr), operation set (expr)
         }
         if(e instanceof OPERATIONSET os){
@@ -66,31 +88,45 @@ class RequestBuilder{
             genRequest(os.op);
             if(os.nextOpSet != null)
                 genRequest(os.nextOpSet);
-
-            // TODO: logic for operation set
+            System.out.println("returned to opset");
+            return;
             // NOTE: operation set includes current operation (expr), and next operation set (expr)
         }
         if(e instanceof OPERATION o){
             System.out.println("operation visited");
             genRequest(o.field);
-
-            // TODO: logic for operation
+            if(o.op == null){
+                String temp = stack.removeLast();
+                field.put(temp, null);
+                System.out.println("Added operation "+temp);
+                return;
+            }
+            field.put(o.op, stack.removeLast());
+            System.out.println("Added field "+field.get(o.op)+", op: "+o.op);
+            return;
             // NOTE: operation includes operation (string), field (expr)
         }
         if(e instanceof PARAMETER p){
             System.out.println("parameter visited");
-            genRequest(e);
-            // TODO: logic for parameter
+            for(Expr a : p.assigns)
+                genRequest(a);
+            return;
             // NOTE: parameter includes parameter (expr), nextparameter (expr)
         }
         if(e instanceof ASSIGN a){
             System.out.println("assign visited");
-            genRequest(a.id);
+            
             genRequest(a.value);
+            genRequest(a.id);
 
-            String value = stack.removeLast();
-            String id = stack.removeLast();
-            System.out.println("Assign value "+id+" equal to "+value+".");
+            String tempId = stack.removeLast();
+            String tempVal = stack.removeLast();
+            System.out.println("Assign value "+tempVal+" equal to "+tempId+".");
+
+            if(parameters.contains(tempId))
+                throw new RuntimeException("Duplicate parameters used.");
+            String[] temp = {tempId, tempVal};
+            parameters.add(temp);
             return;
             // NOTE: assign includes id (ID), value (expr)
         }
@@ -101,5 +137,21 @@ class RequestBuilder{
     public void generate(Expr e){
         stack.clear();
         genRequest(e);
+        pushParameters();
+        // services.parseFields(fields) // will generate output strings in services
+        System.out.println("Generation completed.");
+        // return services OR services.getOutput()
+    }
+
+
+    /*----- DEBUG FUNCTIONS ----- */
+    private void dumpFields(){
+        System.out.println("Dumping fields...");
+        field.forEach((key, value)-> System.out.println("0:"+key+","+value));
+    }
+    private void dumpStack(){
+        System.out.println("Dumping stack...");
+        for(String s : stack)
+            System.out.println(s);
     }
 }

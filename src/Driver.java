@@ -28,7 +28,7 @@ public class Driver  {
         // AST implementation test
         if (ast instanceof Expr e){
             System.out.println("Expression has been read, beginning AST traversal.");
-            
+            req.generate(ast);
         }
 
         // ---- Example of how code will be run: ----
@@ -44,9 +44,9 @@ public class Driver  {
 
         //IGNORE WONT NEEDlogoEngine.open() ; 
 
-        while (parser.getCurrentToken().getType() != Token.EOF) {
-           //ignore for now visitor.visit(parser.command());
-        }
+        // while (parser.getCurrentToken().getType() != Token.EOF) {
+        //    //ignore for now visitor.visit(parser.command());
+        // }
         //WONT NEEDlogoEngine.close() ; 
     
     //**********Debug stage:

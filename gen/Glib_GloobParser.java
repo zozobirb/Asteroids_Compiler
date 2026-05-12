@@ -271,7 +271,11 @@ public class Glib_GloobParser extends Parser {
 			setState(45);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
+			case TRUE:
+			case FALSE:
 			case ID:
+			case INT:
+			case DATE:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(34);
@@ -420,7 +424,9 @@ public class Glib_GloobParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class FieldContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(Glib_GloobParser.ID, 0); }
+		public ValueContext value() {
+			return getRuleContext(ValueContext.class,0);
+		}
 		public FieldContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -439,7 +445,7 @@ public class Glib_GloobParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(59);
-			match(ID);
+			value();
 			}
 		}
 		catch (RecognitionException re) {
@@ -536,9 +542,9 @@ public class Glib_GloobParser extends Parser {
 		"13\u0003\n\u0005\u000020\u0001\u0000\u0000\u000036\u0001\u0000\u0000\u0000"+
 		"42\u0001\u0000\u0000\u000045\u0001\u0000\u0000\u00005\t\u0001\u0000\u0000"+
 		"\u000064\u0001\u0000\u0000\u000078\u0005\f\u0000\u000089\u0005\u0005\u0000"+
-		"\u00009:\u0003\u000e\u0007\u0000:\u000b\u0001\u0000\u0000\u0000;<\u0005"+
-		"\f\u0000\u0000<\r\u0001\u0000\u0000\u0000=>\u0007\u0000\u0000\u0000>\u000f"+
-		"\u0001\u0000\u0000\u0000\u0004\u0017\u001e-4";
+		"\u00009:\u0003\u000e\u0007\u0000:\u000b\u0001\u0000\u0000\u0000;<\u0003"+
+		"\u000e\u0007\u0000<\r\u0001\u0000\u0000\u0000=>\u0007\u0000\u0000\u0000"+
+		">\u000f\u0001\u0000\u0000\u0000\u0004\u0017\u001e-4";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

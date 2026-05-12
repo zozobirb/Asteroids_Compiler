@@ -29,7 +29,7 @@ assign
     ;
 
 field
-   : ID
+   : value
    ;
 
 
