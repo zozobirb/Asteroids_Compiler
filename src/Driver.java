@@ -2,6 +2,7 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.antlr.v4.runtime.*;
 
@@ -27,8 +28,16 @@ public class Driver  {
         // AST implementation test
         if (ast instanceof Expr e){
             System.out.println("Expression has been read, beginning AST traversal.");
-            req.generate(ast);
+            
         }
+
+        // ---- Example of how code will be run: ----
+        // HashMap<String> parameters = req.generate(ast);
+        // Service service = req.generateService()
+        // <List>String output = service.getOutput();
+        // for(String line : output)
+        // System.out.println(line);
+        // -----
         
         //OurEngine OurEngine = new OurEngine();
         //Visitor visitor = new Visitor(OurEngine);
