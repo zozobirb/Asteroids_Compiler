@@ -10,7 +10,7 @@ import java.util.HashMap;
 class RequestBuilder{
     private final List<String> stack = new ArrayList<>();
     private final List<String[]> parameters = new ArrayList<String[]>();
-    private final HashMap<String, String> field = new HashMap<String, String>();
+    private final HashMap<String, String> field = new HashMap<String, String>(); // field, operator
     private final AsteroidServices service = new AsteroidServices();
     private boolean generated = false;
     private String start = null;
@@ -39,8 +39,8 @@ class RequestBuilder{
                     end=p[1];
             }
             else
-                System.out.println(p[0]);
-                // throw new RuntimeException("unknown parameter");
+                // System.out.println(p[0]);
+                throw new RuntimeException("unknown parameter");
         }
         if(!generated && start != null)
             service.serviceDate(start, "7");
@@ -114,11 +114,11 @@ class RequestBuilder{
             genRequest(o.field);
             if(o.op == null){
                 String temp = stack.removeLast();
-                field.put(temp, null);
+                field.put(null, temp);
                 // System.out.println("Added operation "+temp);
                 return;
             }
-            field.put(o.op, stack.removeLast());
+            field.put(stack.removeLast(), o.op);
             // System.out.println("Added field "+field.get(o.op)+", op: "+o.op);
             return;
             // NOTE: operation includes operation (string), field (expr)
