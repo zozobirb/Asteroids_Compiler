@@ -28,6 +28,8 @@ public class AsteroidServices{
     //constructor for asteroidServices, might not need the engine param..?
   
 
+    public List<String> getOutput(){return this.out;}
+
     //functions actual implementation for the the AsteroidServices interface here:
 
     
@@ -76,7 +78,6 @@ public class AsteroidServices{
 
 
     public void parseById(HashMap<String, String> fields){
-
         JsonObject root = JsonParser.parseString(this.jsonGloob).getAsJsonObject();
         JsonArray closeApproaches = root.getAsJsonArray("close_approach_data");
         JsonObject EarthData = closeApproaches.get(2).getAsJsonObject();

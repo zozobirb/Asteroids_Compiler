@@ -87,7 +87,8 @@ class RequestBuilder{
         }
         if(e instanceof FETCH f){
             // System.out.println("fetch visited");
-            genRequest(f.parameters);
+            if(f.parameters != null)
+                genRequest(f.parameters);
             return;
         }
         if(e instanceof COMMAND c){
@@ -114,7 +115,7 @@ class RequestBuilder{
             genRequest(o.field);
             if(o.op == null){
                 String temp = stack.removeLast();
-                field.put(null, temp);
+                field.put(temp, null);
                 // System.out.println("Added operation "+temp);
                 return;
             }
@@ -156,7 +157,7 @@ class RequestBuilder{
         genRequest(e);
         pushParameters();
         service.parseFields(field); // will generate output strings in services
-        System.out.println("Generation completed.");
+        // System.out.println("Generation completed.");
         return service; //OR services.getOutput()
     }
 

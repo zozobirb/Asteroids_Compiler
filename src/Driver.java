@@ -1,3 +1,5 @@
+import java.util.List;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
@@ -27,8 +29,9 @@ public class Driver  {
 
         // AST implementation test
         AsteroidServices service = req.generate(ast);
-        // for(String line : service.getOutput())
-        //     System.out.println(line);
+
+        for(String line : service.getOutput())
+            System.out.println(line);
 
         // ---- Example of how code will be run: ----
         // HashMap<String> parameters = req.generate(ast);
@@ -84,8 +87,8 @@ public class Driver  {
 // String isHazardous = ObjectAllIndex.get("is_sentry_object").getAsString();
 
 //New testing, services
-AsteroidServices testS = new AsteroidServices();
-testS.testing();
+// AsteroidServices testS = new AsteroidServices();
+// testS.testing();
 
 
 

@@ -32,7 +32,7 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
         /* checks for parameters, if any. Should be 5 if parameters. 
         * Checking for ctx.parameters().size() does not work, unsure of why.*/
        Expr node = null;
-        if(ctx.getChildCount() == 5)
+        if(ctx.getChildCount() >= 5)
             node = visit(ctx.parameters());
         return new FETCH(node);
     }
@@ -79,14 +79,14 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
             Expr temp = visit(ctx.field());
             return new OPERATION(null, visit(ctx.field()));
         }
-        System.out.println(ctx.getChildCount());
+        // System.out.println(ctx.getChildCount());
         return new OPERATION(ctx.getChild(0).getText(), visit(ctx.field()));
     }
 
     @Override
     public Expr visitField(Glib_GloobParser.FieldContext ctx){
         // System.out.println("Field visited.");
-        System.out.println(ctx.getChildCount());
+        // System.out.println(ctx.getChildCount());
         return new FIELD(visitValue(ctx.value()));
     }
 
