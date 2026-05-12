@@ -9,38 +9,43 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
 
     @Override
     public Expr visitCommand(Glib_GloobParser.CommandContext ctx){
-        Expr node = visit(ctx.fetch());
-        for(int i = 1; i < ctx.operation().size(); i++){
-            // TODO: fill in after adding operation
+        System.out.println("Command visited");
+        Expr f = visit(ctx.fetch());
+        Expr opS = null;
+        for(int i = 0; i < ctx.operation().size(); i++){
+            Expr op = visit(ctx.operation(i));
+            opS = new OPERATIONSET(op, opS);
         }
         
-        System.out.println("Command visited");
-        return node;
+        return new COMMAND(f, opS);
     }
-
-    // TODO: add operation
 
     @Override 
     public Expr visitFetch(Glib_GloobParser.FetchContext ctx){
-        // TODO: figure this one out
-        return null;
+        System.out.println("Fetch visited.");
+        /* checks for parameters, if any. Should be 5 if parameters. 
+        * Checking for ctx.parameters().size() does not work, unsure of why.*/
+       Expr node = null;
+        if(ctx.getChildCount() == 5)
+            node = visit(ctx.parameters());
+        return new FETCH(node);
     }
 
     @Override
     public Expr visitParameters(Glib_GloobParser.ParametersContext ctx){
-        // NOTE: the last parameter node will be null
+        System.out.println("Parameter visited");
 
         Expr node = visit(ctx.assign(0));
         for(int i = 1; i < ctx.assign().size(); i++){
             Expr right = visit(ctx.assign(i));
             node = new PARAMETER(node, right);
         }
-        System.out.println("Parameter visited");
         return node;
     }
 
     @Override 
     public Expr visitAssign(Glib_GloobParser.AssignContext ctx){
+        System.out.println("Assign visited, id: "+ctx.ID().getText());
         return new ASSIGN(new ID(ctx.ID().getText()), visit(ctx.value()));
     }
 
@@ -63,6 +68,8 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
     @Override
     public Expr visitOperation(Glib_GloobParser.OperationContext ctx){
         System.out.println("Operation visited");
+        if(ctx.getChildCount() == 1)
+            return visit(ctx.field());
         Expr _field = visit(ctx.field());
         String op = ctx.getChild(0).getText();
         return new OPERATION(op, _field);
@@ -94,14 +101,26 @@ class BOOL extends Expr{
     BOOL(boolean value){this.value=value;}
 }
 
-class FETCH extends Expr{
-    // 
+class FIELD extends Expr{
+    // Might be useless, unsure
+    final Expr field;
+    FIELD(Expr f){this.field=f;}
 }
 
 class OPERATION extends Expr{
     final String op; 
     final Expr field;
     OPERATION(String op, Expr field){this.op=op; this.field=field;}
+}
+
+class OPERATIONSET extends Expr{
+    final Expr op, nextOpSet;
+    OPERATIONSET(Expr op, Expr nOp){this.op=op;this.nextOpSet=nOp;}
+}
+
+class FETCH extends Expr{
+    final Expr parameters;
+    FETCH(Expr p){this.parameters=p;}
 }
 
 class PARAMETER extends Expr{
@@ -115,10 +134,11 @@ class ASSIGN extends Expr{
     ASSIGN(ID id, Expr value){this.id=id;this.value=value;}
 }
 
-// class Command extends Expr{
-//     // fetch
-//     // Operation[]
-// }
+class COMMAND extends Expr{
+    final Expr fetch;
+    final Expr operationSet;
+    COMMAND(Expr f, Expr op){this.fetch=f;this.operationSet=op;}
+}
 
 // class Fetch extends Expr{
 //     // Parameters //one or none
