@@ -1,3 +1,5 @@
+import java.util.List;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
@@ -26,10 +28,10 @@ public class Driver  {
         RequestBuilder req = new RequestBuilder();
 
         // AST implementation test
-        if (ast instanceof Expr e){
-            System.out.println("Expression has been read, beginning AST traversal.");
-            
-        }
+        AsteroidServices service = req.generate(ast);
+
+        for(String line : service.getOutput())
+            System.out.println(line);
 
         // ---- Example of how code will be run: ----
         // HashMap<String> parameters = req.generate(ast);
@@ -44,9 +46,9 @@ public class Driver  {
 
         //IGNORE WONT NEEDlogoEngine.open() ; 
 
-        while (parser.getCurrentToken().getType() != Token.EOF) {
-           //ignore for now visitor.visit(parser.command());
-        }
+        // while (parser.getCurrentToken().getType() != Token.EOF) {
+        //    //ignore for now visitor.visit(parser.command());
+        // }
         //WONT NEEDlogoEngine.close() ; 
     
     //**********Debug stage:
@@ -85,8 +87,8 @@ public class Driver  {
 // String isHazardous = ObjectAllIndex.get("is_sentry_object").getAsString();
 
 //New testing, services
-AsteroidServices testS = new AsteroidServices();
-testS.testing();
+// AsteroidServices testS = new AsteroidServices();
+// testS.testing();
 
 
 
