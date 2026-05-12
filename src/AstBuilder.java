@@ -12,13 +12,13 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
 
     @Override
     public Expr visitCommand(Glib_GloobParser.CommandContext ctx){
-        System.out.println("Command visited");
+        // System.out.println("Command visited");
         Expr f = visit(ctx.fetch());
         Expr opS = null;
         if(ctx.operation().size() < 1)
             return new COMMAND(f, opS);
         for(int i = 0; i < ctx.operation().size(); i++){
-            System.out.println("creating op set");
+            // System.out.println("creating op set");
             Expr op = visit(ctx.operation(i));
             opS = new OPERATIONSET(op, opS);
         }
@@ -28,7 +28,7 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
 
     @Override 
     public Expr visitFetch(Glib_GloobParser.FetchContext ctx){
-        System.out.println("Fetch visited.");
+        // System.out.println("Fetch visited.");
         /* checks for parameters, if any. Should be 5 if parameters. 
         * Checking for ctx.parameters().size() does not work, unsure of why.*/
        Expr node = null;
@@ -39,7 +39,7 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
 
     @Override
     public Expr visitParameters(Glib_GloobParser.ParametersContext ctx){
-        System.out.println("Parameter visited");
+        // System.out.println("Parameter visited");
 
         PARAMETER node = new PARAMETER();
         node.add(visit(ctx.assign(0)));
@@ -52,13 +52,13 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
 
     @Override 
     public Expr visitAssign(Glib_GloobParser.AssignContext ctx){
-        System.out.println("Assign visited, id: "+ctx.ID().getText());
+        // System.out.println("Assign visited, id: "+ctx.ID().getText());
         return new ASSIGN(new ID(ctx.ID().getText()), visit(ctx.value()));
     }
 
     @Override
     public Expr visitValue(Glib_GloobParser.ValueContext ctx){
-        System.out.println("Value visited");
+        // System.out.println("Value visited");
 
         if(ctx.ID() != null)
             return new ID(ctx.ID().getText());
@@ -74,7 +74,7 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
 
     @Override
     public Expr visitOperation(Glib_GloobParser.OperationContext ctx){
-        System.out.println("Operation visited");
+        // System.out.println("Operation visited");
         if(ctx.getChildCount() == 1){
             Expr temp = visit(ctx.field());
             return new OPERATION(null, visit(ctx.field()));
@@ -85,7 +85,7 @@ class AstBuilder extends Glib_GloobBaseVisitor<Expr>{
 
     @Override
     public Expr visitField(Glib_GloobParser.FieldContext ctx){
-        System.out.println("Field visited.");
+        // System.out.println("Field visited.");
         System.out.println(ctx.getChildCount());
         return new FIELD(visitValue(ctx.value()));
     }

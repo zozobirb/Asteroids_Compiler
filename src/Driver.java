@@ -26,10 +26,9 @@ public class Driver  {
         RequestBuilder req = new RequestBuilder();
 
         // AST implementation test
-        if (ast instanceof Expr e){
-            System.out.println("Expression has been read, beginning AST traversal.");
-            req.generate(ast);
-        }
+        AsteroidServices service = req.generate(ast);
+        // for(String line : service.getOutput())
+        //     System.out.println(line);
 
         // ---- Example of how code will be run: ----
         // HashMap<String> parameters = req.generate(ast);
