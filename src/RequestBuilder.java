@@ -12,15 +12,42 @@ class RequestBuilder{
     private final List<String[]> parameters = new ArrayList<String[]>();
     private final HashMap<String, String> field = new HashMap<String, String>();
     private final AsteroidServices service = new AsteroidServices();
+    private boolean generated = false;
+    private String start = null;
+    private String end = null;
 
     private void pushParameters(){
         for(String[] p : parameters){
-            if(p[0].equals("ID"))
+            if(p[0].toUpperCase().equals("ID") && !generated){
                 service.serviceID(Integer.parseInt(p[1]));
-
-            // if(p[0].equals(DATE))
+                generated=true;
+            }
+            else if(p[0].toUpperCase().equals("STARTDATE") && !generated){
+                if(end!=null){
+                    service.serviceDate(p[1], end);
+                    generated=true;
+                }
+                else
+                    start=p[1];
+            }
+            else if(p[0].toUpperCase().equals("ENDDATE") && !generated){
+                if(start!=null){
+                    service.serviceDate(start, p[1]);
+                    generated=true;
+                }
+                else
+                    end=p[1];
+            }
+            else
+                System.out.println(p[0]);
+                // throw new RuntimeException("unknown parameter");
         }
-        service.serviceAll();
+        if(!generated && start != null)
+            service.serviceDate(start, "7");
+        if(!generated && end != null)
+            throw new RuntimeException("End date specified but no start date.");
+        if(!generated)
+            service.serviceAll();
     }
 
     public void genRequest(Expr e){
